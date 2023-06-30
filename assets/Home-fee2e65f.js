@@ -1,0 +1,1 @@
+import{a0 as e,o as a,a1 as t,a as o,w as r,L as s,a3 as c,a2 as n}from"./index-a6409d76.js";import{g as l}from"./VBtn-58a71a82.js";const _={},d=c("h1",null,"Hello, world!",-1);function m(f,i){return a(),t(s,null,[d,o(l,{theme:"dark"},{default:r(()=>[n("Click me!")]),_:1})],64)}const p=e(_,[["render",m]]);export{p as default};
