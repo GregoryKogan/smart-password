@@ -6,6 +6,9 @@ import vuetify, { transformAssetUrls } from "vite-plugin-vuetify";
 import { defineConfig } from "vite";
 import { fileURLToPath, URL } from "node:url";
 
+import wasm from "vite-plugin-wasm";
+import topLevelAwait from "vite-plugin-top-level-await";
+
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [
@@ -16,6 +19,8 @@ export default defineConfig({
     vuetify({
       autoImport: true,
     }),
+    wasm(),
+    topLevelAwait(),
   ],
   define: { "process.env": {} },
   resolve: {
