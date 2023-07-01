@@ -1,7 +1,7 @@
 <template>
   <div>
     <h1 style="margin-bottom: 0.2em">Set app password</h1>
-    <v-form v-model="form">
+    <v-form v-model="form" @submit.prevent="setAppPassword">
       <v-text-field
         v-model="password"
         placeholder="App password"
@@ -43,7 +43,8 @@
 
 <script lang="ts">
 import { defineComponent } from "vue";
-// import hashData from "@/crypto/hasher";
+import { hash } from "@/crypto/hasher";
+import { getSalt } from "@/crypto/storage";
 
 export default defineComponent({
   name: "SetAppPassword",
@@ -66,10 +67,11 @@ export default defineComponent({
   }),
   methods: {
     setAppPassword() {
-      console.log(this.password);
-      // hashData(this.password).then((hash: string) => {
-      //   console.log(hash);
-      // });
+      if (!this.form) return;
+      hash(this.password, getSalt()).then((hash: string) => {
+        localStorage.setItem("appPassword", hash);
+        this.$router.push("Home");
+      });
     },
   },
 });

@@ -13,6 +13,8 @@
 import { defineComponent } from "vue";
 import SetAppPassword from "@/components/auth/SetAppPassword.vue";
 import Login from "@/components/auth/Login.vue";
+import { generateSalt } from "@/crypto/hasher";
+import { getSalt, saveSalt } from "@/crypto/storage";
 
 export default defineComponent({
   name: "Auth",
@@ -25,6 +27,13 @@ export default defineComponent({
   }),
   mounted() {
     this.appPasswordIsSet = !!localStorage.getItem("appPassword");
+    this.ensureSaltExists();
+  },
+  methods: {
+    ensureSaltExists() {
+      if (getSalt()) return;
+      saveSalt(generateSalt());
+    },
   },
 });
 </script>
