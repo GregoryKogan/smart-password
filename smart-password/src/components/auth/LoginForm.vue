@@ -45,11 +45,16 @@ export default defineComponent({
   methods: {
     attemptLogin() {
       const hash = localStorage.getItem("appPassword");
-      verify(this.password, hash).then((res: boolean) => {
-        if (res) {
-          this.$router.push({ name: "Home" });
-        }
-      });
+      if (hash) {
+        verify(this.password, hash).then((res: boolean) => {
+          if (res) {
+            this.$router.push({ name: "Home" });
+          }
+        });
+      } else {
+        console.warn("Login page opened, but password is not set");
+        this.$router.push({ name: "Register" });
+      }
     },
   },
 });
