@@ -37,7 +37,7 @@ import { defineComponent } from "vue";
 import { verify } from "@/crypto/hasher";
 
 export default defineComponent({
-  name: "Login",
+  name: "LoginForm",
   data: () => ({
     password: "",
     show: false,
@@ -47,7 +47,7 @@ export default defineComponent({
       const hash = localStorage.getItem("appPassword");
       verify(this.password, hash).then((res: boolean) => {
         if (res) {
-          this.$router.push("Home");
+          this.$router.push({ name: "Home" });
         }
       });
     },
