@@ -1,4 +1,17 @@
 <template>
-  <h1>Hello, world!</h1>
-  <v-btn theme="dark">Click me!</v-btn>
+  <v-container style="padding: 1em">
+    <YourServicesRow />
+  </v-container>
 </template>
+
+<script lang="ts">
+import { defineComponent } from "vue";
+import YourServicesRow from "@/components/services/YourServicesRow.vue";
+
+export default defineComponent({
+  name: "Home",
+  components: {
+    YourServicesRow,
+  },
+});
+</script>

@@ -45,6 +45,7 @@
 import { defineComponent } from "vue";
 import { hash } from "@/crypto/hasher";
 import { getSalt } from "@/crypto/storage";
+import config from "@/crypto/config";
 
 export default defineComponent({
   name: "ResgisterForm",
@@ -69,7 +70,7 @@ export default defineComponent({
     setAppPassword() {
       if (!this.form) return;
       hash(this.password, getSalt()).then((hash: string) => {
-        localStorage.setItem("appPassword", hash);
+        localStorage.setItem(config.appPasswordKey, hash);
         this.$router.push({ name: "Home" });
       });
     },

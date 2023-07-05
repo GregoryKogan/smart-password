@@ -10,13 +10,14 @@
 import { defineComponent } from "vue";
 import { generateSalt } from "@/crypto/hasher";
 import { getSalt, saveSalt } from "@/crypto/storage";
+import config from "@/crypto/config";
 
 export default defineComponent({
   name: "App",
   created() {
     this.ensureSaltExists();
 
-    if (localStorage.getItem("appPassword")) {
+    if (localStorage.getItem(config.appPasswordKey)) {
       this.$router.push({ name: "Login" });
     } else {
       this.$router.push({ name: "Register" });

@@ -35,6 +35,7 @@
 <script lang="ts">
 import { defineComponent } from "vue";
 import { verify } from "@/crypto/hasher";
+import config from "@/crypto/config";
 
 export default defineComponent({
   name: "LoginForm",
@@ -44,7 +45,7 @@ export default defineComponent({
   }),
   methods: {
     attemptLogin() {
-      const hash = localStorage.getItem("appPassword");
+      const hash = localStorage.getItem(config.appPasswordKey);
       if (hash) {
         verify(this.password, hash).then((res: boolean) => {
           if (res) {
