@@ -1,5 +1,5 @@
 <template>
-  <v-card flat class="rounded-lg" style="padding: 1em">
+  <v-card flat class="rounded-lg" density="compact" min-width="10em">
     <v-card-title>{{ service.name }}</v-card-title>
     <v-card-subtitle>{{ formatDate(service.createdAt) }}</v-card-subtitle>
     <v-card-text v-if="service.description">{{

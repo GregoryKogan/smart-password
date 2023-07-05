@@ -1,12 +1,12 @@
 <template>
   <h2 style="margin-bottom: 0.5em">Your services</h2>
   <v-row align="center">
-    <RegisterServiceCard style="margin: 1em" />
-    <ServiceCard
-      v-for="service in services"
-      :service="service"
-      style="margin: 1em"
-    />
+    <v-col align="center" cols="auto">
+      <RegisterServiceCard />
+    </v-col>
+    <v-col v-for="service in services" cols="auto">
+      <ServiceCard :service="service" />
+    </v-col>
   </v-row>
 </template>
 
@@ -45,6 +45,21 @@ export default defineComponent({
     // },
     loadServices(): Service[] {
       return [
+        {
+          name: "service 1",
+          createdAt: new Date(),
+          description: "description 1",
+        },
+        {
+          name: "service 2",
+          createdAt: new Date(),
+          description: "description 2",
+        },
+        {
+          name: "service 3",
+          createdAt: new Date(),
+          description: "description 3",
+        },
         {
           name: "service 1",
           createdAt: new Date(),

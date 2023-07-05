@@ -1,5 +1,5 @@
 <template>
-  <v-container style="padding: 1em">
+  <v-container style="padding: 3em">
     <YourServicesRow />
   </v-container>
 </template>
