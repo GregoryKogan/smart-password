@@ -5,7 +5,6 @@
     theme="dark"
     variant="tonal"
     density="compact"
-    hover="true"
     min-width="7em"
     @click="addService"
   >

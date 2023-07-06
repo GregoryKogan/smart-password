@@ -1396,6 +1396,11 @@ run-parallel@^1.1.9:
   dependencies:
     queue-microtask "^1.2.2"
 
+search-array@^1.6.0:
+  version "1.6.0"
+  resolved "https://registry.yarnpkg.com/search-array/-/search-array-1.6.0.tgz#0937f45f4d906caa83fb0585aadcbc5455f2572e"
+  integrity sha512-7gRZ5m4JcI+lFQjQSjTfmD7HoJ//I41DmbHTDuHIVyCyEZhj43hxnXOcCZoB9L2dbSfUPPyu2khu7HzDy9IJ0w==
+
 semver@^6.0.0:
   version "6.3.0"
   resolved "https://registry.yarnpkg.com/semver/-/semver-6.3.0.tgz#ee0a64c8af5e8ceea67687b133761e1becbd1d3d"
