@@ -1,7 +1,9 @@
 // Utilities
 import { defineStore } from "pinia";
+import { saveServices } from "@/crypto/storage";
+import config from "@/crypto/config";
 
-interface Service {
+export interface Service {
   name: string;
   createdAt: Date;
   description?: string;
@@ -18,9 +20,14 @@ export const useAppStore = defineStore("app", {
     },
     addService(service: Service) {
       this.services.push(service);
+      const encryption_key = localStorage.getItem(config.appPasswordKey);
+      if (encryption_key) saveServices(this.services, encryption_key);
     },
     removeService(service: Service) {
       this.services = this.services.filter((s) => s.name !== service.name);
+    },
+    serviceExists(name: string): boolean {
+      return this.services.some((service) => service.name === name);
     },
     setServiceSearchResult(result: Service[]) {
       this.serviceSearchResult = result;

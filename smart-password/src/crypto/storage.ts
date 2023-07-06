@@ -1,5 +1,6 @@
 import config from "@/crypto/config";
 import { encrypt_AES256, decrypt_AES256 } from "@/crypto/cipher";
+import { Service } from "@/store/app";
 
 export const encodeBytes = (bytes: Uint8Array): string => {
   return btoa(String.fromCharCode(...bytes));
@@ -20,7 +21,7 @@ export const getSalt = (): Uint8Array | null => {
 };
 
 export const saveServices = (
-  services: string[],
+  services: Service[],
   encryption_key: string
 ): void => {
   localStorage.setItem(
@@ -29,8 +30,14 @@ export const saveServices = (
   );
 };
 
-export const getServices = (encryption_key: string): string[] | null => {
-  const services = localStorage.getItem(config.servicesKey);
-  if (services === null) return null;
-  return JSON.parse(decrypt_AES256(services, encryption_key));
+export const getServices = (encryption_key: string): Service[] | null => {
+  const servicesData = localStorage.getItem(config.servicesKey);
+  if (servicesData === null) return null;
+  const services: Service[] = JSON.parse(
+    decrypt_AES256(servicesData, encryption_key)
+  );
+  for (const service of services) {
+    service.createdAt = new Date(service.createdAt);
+  }
+  return services;
 };

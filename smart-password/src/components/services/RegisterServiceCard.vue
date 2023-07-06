@@ -22,7 +22,7 @@ export default defineComponent({
   name: "RegisterServiceCard",
   methods: {
     addService() {
-      console.log("add service");
+      this.$router.push({ name: "AddService" });
     },
   },
 });

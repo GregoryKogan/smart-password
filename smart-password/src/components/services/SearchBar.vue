@@ -1,6 +1,6 @@
 <template>
   <v-text-field
-    @change="search"
+    @input="search"
     v-model="query"
     append-inner-icon="mdi-magnify"
     placeholder="Search services"

@@ -25,7 +25,7 @@ import ServiceCard from "@/components/services/ServiceCard.vue";
 import RegisterServiceCard from "@/components/services/RegisterServiceCard.vue";
 import SearchBar from "@/components/services/SearchBar.vue";
 import config from "@/crypto/config";
-import { decrypt_AES256 } from "@/crypto/cipher";
+import { getServices } from "@/crypto/storage";
 
 export default defineComponent({
   name: "YoyrServicesRow",
@@ -44,13 +44,9 @@ export default defineComponent({
   },
   methods: {
     loadServices() {
-      const cyphertext = localStorage.getItem(config.servicesKey);
-      if (!cyphertext) return [];
       const decryptionKey = localStorage.getItem(config.appPasswordKey);
       if (!decryptionKey) return [];
-      this.store.setServices(
-        JSON.parse(decrypt_AES256(cyphertext, decryptionKey))
-      );
+      this.store.setServices(getServices(decryptionKey));
     },
   },
 });
