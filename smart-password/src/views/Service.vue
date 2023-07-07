@@ -3,7 +3,7 @@
     <h1>{{ $route.params.name }}</h1>
     <v-row>
       <v-spacer></v-spacer>
-      <DeleteServiceButton :name="$route.params.name" />
+      <DeleteServiceButton :name="$route.params.name.toString()" />
     </v-row>
   </v-container>
 </template>

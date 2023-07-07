@@ -15,7 +15,7 @@
 <script lang="ts">
 import { defineComponent } from "vue";
 import { useAppStore } from "@/store/app";
-import JsonSearch from "search-array";
+const JsonSearch = require("search-array");
 
 export default defineComponent({
   name: "SearchBar",
