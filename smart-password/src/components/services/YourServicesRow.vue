@@ -29,7 +29,6 @@ import { getServices } from "@/crypto/storage";
 
 export default defineComponent({
   name: "YoyrServicesRow",
-  data: () => ({}),
   setup() {
     const store = useAppStore();
     return { store };
@@ -46,7 +45,10 @@ export default defineComponent({
     loadServices() {
       const decryptionKey = localStorage.getItem(config.appPasswordKey);
       if (!decryptionKey) return [];
-      this.store.setServices(getServices(decryptionKey));
+      const services = getServices(decryptionKey);
+      if (services) {
+        this.store.setServices(services);
+      }
     },
   },
 });

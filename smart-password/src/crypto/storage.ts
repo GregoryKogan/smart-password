@@ -39,5 +39,6 @@ export const getServices = (encryption_key: string): Service[] | null => {
   for (const service of services) {
     service.createdAt = new Date(service.createdAt);
   }
+  services.sort((a, b) => b.createdAt.getTime() - a.createdAt.getTime());
   return services;
 };
