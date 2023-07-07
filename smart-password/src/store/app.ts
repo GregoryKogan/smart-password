@@ -23,8 +23,10 @@ export const useAppStore = defineStore("app", {
       const encryption_key = localStorage.getItem(config.appPasswordKey);
       if (encryption_key) saveServices(this.services, encryption_key);
     },
-    removeService(service: Service) {
-      this.services = this.services.filter((s) => s.name !== service.name);
+    removeService(name: string) {
+      this.services = this.services.filter((s) => s.name !== name);
+      const encryption_key = localStorage.getItem(config.appPasswordKey);
+      if (encryption_key) saveServices(this.services, encryption_key);
     },
     serviceExists(name: string): boolean {
       return this.services.some((service) => service.name === name);

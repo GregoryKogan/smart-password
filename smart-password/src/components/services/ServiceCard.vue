@@ -1,5 +1,11 @@
 <template>
-  <v-card flat class="rounded-lg" density="compact" min-width="10em">
+  <v-card
+    @click="goToService(service.name)"
+    flat
+    class="rounded-lg"
+    density="compact"
+    min-width="10em"
+  >
     <v-card-title>{{ service.name }}</v-card-title>
     <v-card-subtitle>{{ formatDate(service.createdAt) }}</v-card-subtitle>
     <v-card-text v-if="service.description">{{
@@ -36,6 +42,9 @@ export default defineComponent({
       if (month.length < 2) month = "0" + month;
       if (day.length < 2) day = "0" + day;
       return [day, month, year].join(".");
+    },
+    goToService(serviceName: string) {
+      this.$router.push({ name: "Service", params: { name: serviceName } });
     },
   },
 });

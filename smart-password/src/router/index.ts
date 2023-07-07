@@ -26,6 +26,11 @@ const routes = [
         name: "AddService",
         component: () => import("@/views/AddService.vue"),
       },
+      {
+        path: "/service/:name",
+        name: "Service",
+        component: () => import("@/views/Service.vue"),
+      },
     ],
   },
 ];

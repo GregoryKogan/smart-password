@@ -81,7 +81,7 @@ export default defineComponent({
     add() {
       this.store.addService({
         name: this.name,
-        description: this.description.length > 0 ? this.description : null,
+        description: this.description,
         createdAt: new Date(),
       });
       this.$router.push({ name: "Home" });
