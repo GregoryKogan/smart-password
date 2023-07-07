@@ -1,4 +1,4 @@
-const CryptoJS = require("crypto-js");
+import CryptoJS from "crypto-js";
 
 export const encrypt_AES256 = (plaintext: string, key: string): string => {
   return CryptoJS.AES.encrypt(plaintext, key).toString();

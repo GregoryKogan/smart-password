@@ -15,7 +15,7 @@
 <script lang="ts">
 import { defineComponent } from "vue";
 import { useAppStore } from "@/store/app";
-const JsonSearch = require("search-array");
+import Fuse from "fuse.js";
 
 export default defineComponent({
   name: "SearchBar",
@@ -28,8 +28,12 @@ export default defineComponent({
   }),
   methods: {
     search() {
-      const searcher = new JsonSearch(this.store.services, { sort: true });
-      this.store.setServiceSearchResult(searcher.query(this.query));
+      const fuse = new Fuse(this.store.services, {
+        keys: ["name", "description"],
+        threshold: 0.3,
+      });
+      const result = fuse.search(this.query);
+      this.store.setServiceSearchResult(result.map((r) => r.item));
     },
   },
 });
